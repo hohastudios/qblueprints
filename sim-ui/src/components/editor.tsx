@@ -5,16 +5,16 @@ import { useEffect } from "react";
 function Editor() {
   var graph = new LGraph();
 
-  useEffect(() => {
-    var canvas = new LGraphCanvas("#simgraph", graph, { autoresize: true });
-    graph.start();
-  }, []);
-
   const { saving, toggleSave } = useGlobalStateStore();
   if (saving) {
     console.log(JSON.stringify(graph.serialize()));
     toggleSave();
   }
+
+  useEffect(() => {
+    var canvas = new LGraphCanvas("#simgraph", graph, { autoresize: true });
+    graph.start();
+  }, []);
 
   return (
     <>
