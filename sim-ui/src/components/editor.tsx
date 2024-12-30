@@ -2,9 +2,9 @@ import useGlobalStateStore from "@/states/globalstate";
 import { LGraph, LGraphCanvas } from "litegraph.js";
 import { useEffect } from "react";
 
-function Editor() {
-  var graph = new LGraph();
+var graph = new LGraph();
 
+function Editor() {
   const { saving, toggleSave } = useGlobalStateStore();
   if (saving) {
     console.log(JSON.stringify(graph.serialize()));
