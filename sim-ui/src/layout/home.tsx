@@ -14,7 +14,7 @@ import { log } from "console";
 import useGlobalStateStore from "@/states/globalstate";
 
 function Home() {
-  const { saving, toggleSave } = useGlobalStateStore();
+  const { saving, toggleSave, loading, toggleLoad } = useGlobalStateStore();
 
   return (
     <>
@@ -25,6 +25,9 @@ function Home() {
             <MenubarContent>
               <MenubarItem>
                 New <MenubarShortcut>Ctrl+N</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem onClick={toggleLoad}>
+                Load <MenubarShortcut>Ctrl+L</MenubarShortcut>
               </MenubarItem>
               <MenubarItem onClick={toggleSave}>
                 Save <MenubarShortcut>Ctrl+S</MenubarShortcut>
