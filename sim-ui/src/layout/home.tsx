@@ -15,27 +15,25 @@ function Home() {
 
     return (
       <>
-          <div className='min-h-screen min-w-screen grid border-none'>
-            <div >
-            <Menubar>
-              <MenubarMenu>
-                <MenubarTrigger>File</MenubarTrigger>
-                <MenubarContent>
-                  <MenubarItem>
-                    New <MenubarShortcut>Ctrl+N</MenubarShortcut>
-                  </MenubarItem>
-                  <MenubarItem>
-                    Save <MenubarShortcut>Ctrl+S</MenubarShortcut>
-                  </MenubarItem>
-                </MenubarContent>
-              </MenubarMenu>
-            </Menubar>
+        <div className='max-h-fit max-w-screen'>
+        <Menubar>
+          <MenubarMenu>
+            <MenubarTrigger>File</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem>
+                New <MenubarShortcut>Ctrl+N</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem>
+                Save <MenubarShortcut>Ctrl+S</MenubarShortcut>
+              </MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
+        </div>
+        <div className='max-w-screen max-h-screen'>
+          <Editor />
+        </div>
 
-            </div>
-            <div>
-              <Editor />
-            </div>
-          </div>
       </>
     )
   }
