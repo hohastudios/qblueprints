@@ -13,7 +13,7 @@ import {
 import useGlobalStateStore from "@/states/globalstate";
 
 function Home() {
-  const { saving, toggleSave, loading, toggleLoad } = useGlobalStateStore();
+  const { toggleClearNodes, toggleSave, toggleLoad } = useGlobalStateStore();
 
   return (
     <>
@@ -22,7 +22,7 @@ function Home() {
           <MenubarMenu>
             <MenubarTrigger>File</MenubarTrigger>
             <MenubarContent>
-              <MenubarItem>
+              <MenubarItem onClick={toggleClearNodes}>
                 New <MenubarShortcut>Ctrl+N</MenubarShortcut>
               </MenubarItem>
               <MenubarItem onClick={toggleLoad}>
