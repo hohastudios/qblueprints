@@ -1,6 +1,8 @@
 import useGlobalStateStore from "@/states/globalstate";
 import { saveAs } from "file-saver";
-import { LGraph, LGraphCanvas } from "litegraph.js";
+import { LGraph, LGraphCanvas, LGraphNode, LiteGraph } from "litegraph.js";
+import { Watch } from "@/components/litegraph/default-nodes";
+import { Uj } from "@/components/litegraph/custom-nodes/qsql-nodes";
 import { useEffect } from "react";
 
 var graph = new LGraph();
@@ -14,8 +16,15 @@ function Editor() {
     toggleSave();
   }
 
+  function RegisterStartupNodes() {
+    LiteGraph.registerNodeType("basic/watch", Watch);
+    LiteGraph.registerNodeType("qsql/joins/uj", Uj);
+  }
+
   useEffect(() => {
     var canvas = new LGraphCanvas("#simgraph", graph, { autoresize: true });
+    LiteGraph.clearRegisteredTypes();
+    RegisterStartupNodes();
     graph.start();
   }, []);
 
