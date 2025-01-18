@@ -5,10 +5,16 @@ import { Watch } from "@/components/litegraph/default-nodes";
 import { Uj, UpdateCol } from "@/components/litegraph/custom-nodes/qsql-nodes";
 import { useEffect } from "react";
 import { FIXOrderStdTemplate } from "./litegraph/custom-nodes/input-nodes";
+import "./editor.css";
 
 var graph = new LGraph();
 
 function Editor() {
+  function setLGDefaults() {
+    LiteGraph.release_link_on_empty_shows_menu = true;
+    LiteGraph.dialog_close_on_mouse_leave = true;
+  }
+
   const {
     clearnodes,
     loading,
@@ -20,7 +26,10 @@ function Editor() {
 
   function InitWorkspace() {
     var canvas = new LGraphCanvas("#simgraph", graph, { autoresize: true });
-    LiteGraph.clearRegisteredTypes();
+    setLGDefaults();
+    canvas.allow_searchbox = true;
+
+    //LiteGraph.clearRegisteredTypes();
     RegisterStartupNodes();
     graph.start();
   }
@@ -36,6 +45,10 @@ function Editor() {
     var blob = new Blob([workspace], { type: "text/json;charset=utf-8" });
     saveAs(blob, "workspace.json");
     toggleSave();
+  }
+
+  if (loading) {
+    toggleLoad();
   }
 
   if (clearnodes) {
@@ -58,7 +71,9 @@ function Editor() {
 
   return (
     <>
-      <canvas id="simgraph" width="1600" height="920" />
+      <canvas id="simgraph" width="1600" height="920">
+        Your browser does not support canvas
+      </canvas>
     </>
   );
 }
