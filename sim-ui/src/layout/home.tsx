@@ -35,7 +35,7 @@ function Home() {
           </MenubarMenu>
         </Menubar>
       </div>
-      <div className="max-w-screen max-h-screen">
+      <div className="max-w-screen max-h-screen editor-content">
         <Editor />
       </div>
     </>
