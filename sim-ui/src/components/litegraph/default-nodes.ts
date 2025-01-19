@@ -10,7 +10,7 @@ export class Watch extends LGraphNode {
   constructor() {
     super();
     this.size = [60, 30];
-    this.addInput("value", 0, { label: "" }); // api requires 0 as generic type
+    this.addInput("value", "", { label: "" }); // api requires 0 as generic type
   }
 
   override onExecute() {
