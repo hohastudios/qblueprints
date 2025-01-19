@@ -9,18 +9,21 @@ export default class SimDefaultGraph extends LGraphNode {
   }
 
   onMouseEnter(event: MouseEvent, pos: Vector2, graphCanvas: LGraphCanvas) {
-    var para = document.createElement("div");
-    para.id = "node_desc";
-    para.style.cssText =
+    var nodeDescElement = document.createElement("div");
+    nodeDescElement.id = "node_desc";
+    nodeDescElement.style.cssText =
       "top:" +
-      event.clientY.toString() +
+      this.pos[1].toString() +
       "px;" +
       "left:" +
-      event.clientX.toString() +
+      this.pos[0].toString() +
       "px;";
     +"z-index:10";
-    para.innerHTML = this.desc;
-    document.getElementById("editor-content").appendChild(para);
+    nodeDescElement.innerHTML = this.desc;
+    var divElement = document.getElementById("editor-content");
+    if (divElement != undefined) {
+      divElement.appendChild(nodeDescElement);
+    }
   }
 
   onMouseLeave(

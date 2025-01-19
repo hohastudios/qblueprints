@@ -5,7 +5,10 @@ import SimDefaultGraph from "../sim-node";
  */
 export class FIXOrderStdTemplate extends SimDefaultGraph {
   constructor() {
-    super("FIX Standard Template", "Inputs a standard FIX message");
+    super(
+      "FIX Standard Template",
+      "Inputs a standard FIX message Inputs a standard FIX message"
+    );
     //add some output slots
     this.addOutput("table", "string");
   }
