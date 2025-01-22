@@ -17,7 +17,7 @@ function Home() {
 
   return (
     <>
-      <div className="max-h-fit max-w-screen">
+      <div className="grid-cols-1">
         <Menubar>
           <MenubarMenu>
             <MenubarTrigger>File</MenubarTrigger>
@@ -34,9 +34,10 @@ function Home() {
             </MenubarContent>
           </MenubarMenu>
         </Menubar>
-      </div>
-      <div id="editor-content" className="max-w-screen max-h-screen">
-        <Editor />
+
+        <div id="editor-content" style={{ paddingLeft: 2 }}>
+          <Editor />
+        </div>
       </div>
     </>
   );

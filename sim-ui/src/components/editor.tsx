@@ -6,6 +6,7 @@ import { Uj, UpdateCol } from "@/components/litegraph/custom-nodes/qsql-nodes";
 import { useEffect } from "react";
 import { FIXOrderStdTemplate } from "./litegraph/custom-nodes/input-nodes";
 import "./editor.css";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 var graph = new LGraph();
 
@@ -25,7 +26,7 @@ function Editor() {
   } = useGlobalStateStore();
 
   function InitWorkspace() {
-    var canvas = new LGraphCanvas("#simgraph", graph, { autoresize: true });
+    var canvas = new LGraphCanvas("#simgraph", graph);
     setLGDefaults();
     canvas.allow_searchbox = true;
 
@@ -69,9 +70,15 @@ function Editor() {
     InitWorkspace();
   }, []);
 
+  useWindowSize();
+
   return (
     <>
-      <canvas id="simgraph" width="1600" height="920">
+      <canvas
+        id="simgraph"
+        width={parent.innerWidth - 5}
+        height={parent.innerHeight - 40}
+      >
         Your browser does not support canvas
       </canvas>
     </>
